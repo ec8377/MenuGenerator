@@ -43,7 +43,7 @@ namespace MenuGenerator {
 
             using SKPaint paint = new SKPaint
             {
-                Color = SKColors.Orange,
+                Color = new SKColor(247, 148, 29, 255),
                 TextSize = 400,
                 Typeface = Sceageus
             };
@@ -52,41 +52,57 @@ namespace MenuGenerator {
             using SKPaint black = new SKPaint {
                 Color = SKColors.Black
             };
+
+            using SKPaint orange = new SKPaint {
+                Color = new SKColor(214, 190, 166)
+            };
+
+            using SKPaint brown = new SKPaint {
+                Color = new SKColor(214, 190, 166)
+            };
             
             canvas.DrawRect(150, 300, 250, 15, black);
             canvas.DrawRect(1800, 300, 5000, 15, black);
-            canvas.DrawRect(150, 465, 1920, 1330, black);
+            SKRect boxRect = new SKRect(150, 465, 2100, 1800);
+            canvas.DrawRect(boxRect, brown);
 
-            int yPosition = 200;
-            foreach (var category in menu.Categories)
-            {
-                if (category.Type != "Food") {
-                    continue;
-                }
-                // Draw category name
-                paint.Color = SKColors.Black;
-                paint.TextSize = 40;
-                canvas.DrawText(category.Name, 50, yPosition, paint);
-                yPosition += 50;
 
-                foreach (var item in category.Items)
-                {
-                    // Draw item name
-                    paint.TextSize = 30;
-                    canvas.DrawText(item.Name, 70, yPosition, paint);
-
-                    // Draw price
-                    paint.TextSize = 30;
-                    canvas.DrawText($"${item.Cost:F2}", 600, yPosition, paint);
-                    yPosition += 40;
-
-                    // Draw description
-                    paint.TextSize = 20;
-                    paint.Color = SKColors.Gray;
-                    canvas.DrawText(item.Description, 70, yPosition, paint);
-                    yPosition += 40;
+            foreach(var category in menu.Categories) {
+                if (category.Name == "Dosiiroc Boxes") {
+                    
                 }
             }
+
+            // int yPosition = 200;
+            // foreach (var category in menu.Categories)
+            // {
+            //     if (category.Type != "Food") {
+            //         continue;
+            //     }
+            //     // Draw category name
+            //     paint.Color = SKColors.Black;
+            //     paint.TextSize = 40;
+            //     canvas.DrawText(category.Name, 50, yPosition, paint);
+            //     yPosition += 50;
+
+            //     foreach (var item in category.Items)
+            //     {
+            //         // Draw item name
+            //         paint.TextSize = 30;
+            //         canvas.DrawText(item.Name, 70, yPosition, paint);
+
+            //         // Draw price
+            //         paint.TextSize = 30;
+            //         canvas.DrawText($"${item.Cost:F2}", 600, yPosition, paint);
+            //         yPosition += 40;
+
+            //         // Draw description
+            //         paint.TextSize = 20;
+            //         paint.Color = SKColors.Gray;
+            //         canvas.DrawText(item.Description, 70, yPosition, paint);
+            //         yPosition += 40;
+            //     }
+            // }
 
             // Save as PNG
             using SKImage image = SKImage.FromBitmap(bitmap);
