@@ -2,6 +2,7 @@
     "categories": [
         {
             "name": "Coffee",
+            "type": "Drink",
             "items": [
                 {
                     "name": "Espresso Shot",
@@ -32,6 +33,7 @@
         },
         {
             "name": "Tea",
+            "type": "Drink",
             "items": [
                 {
                     "name": "Orange Rooibos",
@@ -57,6 +59,7 @@
         },
         {
             "name": "Specialties",
+            "type": "Drink",
             "items": [
                 {
                     "name": "Jollypong Frappe",
@@ -87,6 +90,7 @@
         },
         {
             "name": "Soft Drinks",
+            "type": "Drink",
             "items": [
                 {
                     "name": "Coke Products",
@@ -102,6 +106,7 @@
         },
         {
             "name": "Korean Ade",
+            "type": "Drink",
             "items": [
                 {
                     "name": "Grapefruit",
@@ -113,6 +118,7 @@
         },
         {
             "name": "Fried Dishes",
+            "type": "Food",
             "items": [
                 {
                     "name": "Korean Fried Chicken",
@@ -128,6 +134,7 @@
         },
         {
             "name": "Appetizers",
+            "type": "Food",
             "items": [
                 {
                     "name": "Tteokbokki",
@@ -158,6 +165,7 @@
         },
         {
             "name": "BBQ Meats",
+            "type": "Food",
             "items": [
                 {
                     "name": "Beef Bulgogi",
@@ -178,6 +186,7 @@
         },
         {
             "name": "Noodles",
+            "type": "Food",
             "items": [
                 {
                     "name": "Bibim Naengmyun",
@@ -193,6 +202,7 @@
         },
         {
             "name": "Rice Dishes",
+            "type": "Food",
             "items": [
                 {
                     "name": "Dolsot Bibimbap",
@@ -218,6 +228,7 @@
         },
         {
             "name": "Korean Pancakes",
+            "type": "Food",
             "items": [
                 {
                     "name": "Yachae Jeon (Veggie)",
@@ -238,6 +249,7 @@
         },
         {
             "name": "Stews",
+            "type": "Food",
             "items": [
                 {
                     "name": "Kimchi Jjigae",
@@ -278,6 +290,7 @@
         },
         {
             "name": "Katsu Cutlets",
+            "type": "Food",
             "items": [
                 {
                     "name": "Donkatsu (Pork Cutlet)",
@@ -293,6 +306,7 @@
         },
         {
             "name": "Dosiiroc Boxes",
+            "type": "Food",
             "items": [
                 {
                     "name": "Beef Bulgogi Dosiiroc",

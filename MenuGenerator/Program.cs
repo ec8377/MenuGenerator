@@ -9,6 +9,7 @@ namespace MenuGenerator {
 
         public class Category {
             public string? Name { get; set; }
+            public string? Type { get; set; }
             public List<MenuItem>? Items { get; set; }
         }
 
@@ -19,6 +20,10 @@ namespace MenuGenerator {
         }
 
         public static void Main(string[] args) {
+            SKTypeface Baron = SKTypeface.FromFile("fonts/Baron Neue.otf");
+            SKTypeface Kollektif = SKTypeface.FromFile("fonts/Kollektif.ttf");
+            SKTypeface Sceageus = SKTypeface.FromFile("fonts/Sceageus.otf");
+
             string json = File.ReadAllText("menu.json");
             var options = new JsonSerializerOptions {
                 PropertyNameCaseInsensitive = true
@@ -26,8 +31,8 @@ namespace MenuGenerator {
             Menu menu = JsonSerializer.Deserialize<Menu>(json, options)!;
             
             // Define image dimensions
-            int width = 1920;
-            int height = 1080;
+            int width = 5280;
+            int height = 3000;
 
             // Create a new image surface
             using SKBitmap bitmap = new SKBitmap(width, height);
@@ -39,14 +44,25 @@ namespace MenuGenerator {
             using SKPaint paint = new SKPaint
             {
                 Color = SKColors.Orange,
-                TextSize = 60,
-                Typeface = SKTypeface.FromFamilyName("Arial", SKFontStyle.Bold)
+                TextSize = 400,
+                Typeface = Sceageus
             };
-            canvas.DrawText("menu", 50, 100, paint);
+            canvas.DrawText("menu", 525, 400, paint);
+
+            using SKPaint black = new SKPaint {
+                Color = SKColors.Black
+            };
+            
+            canvas.DrawRect(150, 300, 250, 15, black);
+            canvas.DrawRect(1800, 300, 5000, 15, black);
+            canvas.DrawRect(150, 465, 1920, 1330, black);
 
             int yPosition = 200;
             foreach (var category in menu.Categories)
             {
+                if (category.Type != "Food") {
+                    continue;
+                }
                 // Draw category name
                 paint.Color = SKColors.Black;
                 paint.TextSize = 40;
@@ -61,7 +77,7 @@ namespace MenuGenerator {
 
                     // Draw price
                     paint.TextSize = 30;
-                    canvas.DrawText($"${item.Cost:F2}", 950, yPosition, paint);
+                    canvas.DrawText($"${item.Cost:F2}", 600, yPosition, paint);
                     yPosition += 40;
 
                     // Draw description

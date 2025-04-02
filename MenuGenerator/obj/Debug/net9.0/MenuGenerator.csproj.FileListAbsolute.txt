@@ -19,3 +19,4 @@
 /Users/echun/Desktop/actual repos/MenuGenerator/MenuGenerator/bin/Debug/net9.0/runtimes/win-x86/native/libSkiaSharp.dll
 /Users/echun/Desktop/actual repos/MenuGenerator/MenuGenerator/obj/Debug/net9.0/MenuGenerator.csproj.AssemblyReference.cache
 /Users/echun/Desktop/actual repos/MenuGenerator/MenuGenerator/obj/Debug/net9.0/MenuGene.75219E50.Up2Date
+/Users/echun/Desktop/actual repos/MenuGenerator/MenuGenerator/obj/Debug/net9.0/MenuGenerator.sourcelink.json
