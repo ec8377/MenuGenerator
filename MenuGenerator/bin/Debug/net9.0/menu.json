@@ -117,18 +117,20 @@
             "ade_price": "5.50"
         },
         {
-            "name": "Fried Dishes",
+            "name": "A La Carte",
             "type": "Food",
             "items": [
                 {
-                    "name": "Korean Fried Chicken",
+                    "name": "Korean Boneless Fried Chicken",
                     "cost": "9.95",
-                    "description": "Chicken bites tossed in your choice of sauce (either honey garlic or dosiiroc secret sauce). Upgrade to a large for +$9."
+                    "description": "Deep fried bites of bonesless chicken breast tossed in your choice of sauce. Upgrade to a large for +$9.",
+                    "korean": "순살치킨"
                 },
                 {
                     "name": "Sweet and Sour Pork",
                     "cost": "9.95",
-                    "description": "Deep fried strips of pork coated in a sticky, sweet and sour sauce. Upgrade to a large for +$9."
+                    "description": "Deep fried strips of pork coated in a sticky, sweet and sour sauce. Upgrade to a large for +$9.",
+                    "korean": "탕수육"
                 }
             ]
         },
@@ -139,27 +141,32 @@
                 {
                     "name": "Tteokbokki",
                     "cost": "9.95",
-                    "description": "Chewy rice cakes simmered in a spicy sauce"
-                },
-                {
-                    "name": "Kim Mari",
-                    "cost": "6.95",
-                    "description": "(5 pc) Deep fried crispy vegetable fritters"
+                    "description": "Chewy rice cakes, fish cakes, and veggies simmered in a spicy sauce",
+                    "korean": "떡볶이"
                 },
                 {
                     "name": "Fried Mandu (5 pc)",
                     "cost": "6.95",
-                    "description": "Deep fried pork and beef dumplings served with dipping sauce"
-                },
-                {
-                    "name": "Shumai (6 pc)",
-                    "cost": "6.95",
-                    "description": "Steamed shrimp dumplings"
+                    "description": "Deep fried pork and beef dumplings served with dipping sauce",
+                    "korean": "군만두"
                 },
                 {
                     "name": "Fried Shrimp (4 pc)",
                     "cost": "6.95",
-                    "description": "Fried jumbo shrimp served with dipping sauce"
+                    "description": "Fried jumbo shrimp served with dipping sauce",
+                    "korean": "새우튀김"
+                },
+                {
+                    "name": "Shumai (6 pc)",
+                    "cost": "6.95",
+                    "description": "Steamed shrimp dumplings",
+                    "korean": "새우 슈마이"
+                },
+                {
+                    "name": "Kim Mari (5 pc)",
+                    "cost": "6.95",
+                    "description": "Soft glass noodles wrapped in seaweed, battered and deep fried",
+                    "korean": "김말이"
                 }
             ]
         },
@@ -170,17 +177,20 @@
                 {
                     "name": "Beef Bulgogi",
                     "cost": "21.95",
-                    "description": "Thinly sliced beef ribeye grilled in a korean BBQ marinade"
+                    "description": "Thinly sliced beef ribeye grilled in a korean BBQ marinade",
+                    "korean": "불고기"
                 },
                 {
                     "name": "Spicy Pork Bulgogi",
                     "cost": "19.95",
-                    "description": "Thinly sliced pork grilled in a spicy gochujang marinade"
+                    "description": "Thinly sliced pork grilled in a spicy gochujang marinade",
+                    "korean": "돼지 불고기"
                 },
                 {
                     "name": "Chicken Bulgogi",
                     "cost": "19.95",
-                    "description": "  Grilled chicken thighs glazed with savory korean BBQ sauce"
+                    "description": "Grilled chicken thighs glazed with savory korean BBQ sauce",
+                    "korean": "치킨 불고기"
                 }
             ]
         },
@@ -191,12 +201,14 @@
                 {
                     "name": "Bibim Naengmyun",
                     "cost": "17.95",
-                    "description": "Chewy buckwheat noddles served cold with a spicy sauce, garnished with sliced brisket cucumber and egg"
+                    "description": "Chewy buckwheat noddles served cold with a spicy sauce, garnished with sliced brisket cucumber and egg",
+                    "korean": "비빔냉면"
                 },
                 {
                     "name": "Kimchi Carbonara Udon",
                     "cost": "18.95",
-                    "description": "Udon noddles and bacon in a creamy and spicy sauce infused with kimchi, topped with fried shrimp"
+                    "description": "Udon noddles and bacon in a creamy and spicy sauce infused with kimchi, topped with fried shrimp",
+                    "korean": "김치 까르보 우동"
                 }
             ]
         },
@@ -207,22 +219,26 @@
                 {
                     "name": "Dolsot Bibimbap",
                     "cost": "15.95",
-                    "description": "Rice with seasoned veggies and your choice of beef/spicy pork/tofu served in a hot stone pot with a bottle of house chojang sauce"
+                    "description": "Rice with seasoned veggies and your choice of beef/spicy pork/tofu served in a hot stone pot with a bottle of house chojang sauce",
+                    "korean": "돌솥 비빔밥"
                 },
                 {
                     "name": "Kimchi Fried Rice",
                     "cost": "14.95",
-                    "description": "White rice stir fried with kimchi and pork belly, topped with a fried egg (runny yolk)"
+                    "description": "White rice stir fried with kimchi and pork belly, topped with a fried egg (runny yolk)",
+                    "korean": "김치 볶음밥"
                 },
                 {
                     "name": "Appa's Fried Rice",
                     "cost": "14.95",
-                    "description": "Dad's recipe of hawaiian style fried rice with spam, egg, and veggies"
+                    "description": "Dad's recipe of hawaiian style fried rice with spam, egg, and veggies",
+                    "korean": "아빠의 볶음밥"
                 },
                 {
                     "name": "Shrimp Fried Rice",
                     "cost": "17.95",
-                    "description": "White rice stir fried with shrimp, eggs, and veggies"
+                    "description": "White rice stir fried with shrimp, eggs, and veggies",
+                    "korean": "새우 볶음밥"
                 }
             ]
         },
@@ -233,17 +249,20 @@
                 {
                     "name": "Yachae Jeon (Veggie)",
                     "cost": "12.95",
-                    "description": "Pan fried savory korean pancake with a variety of vegetables"
+                    "description": "Pan fried savory korean pancake with a variety of vegetables",
+                    "korean": "야채전"
                 },
                 {
                     "name": "Kimchi Jeon",
                     "cost": "13.95",
-                    "description": "Pan fried pancake with house made kimchi"
+                    "description": "Pan fried pancake with house made kimchi",
+                    "korean": "김치전"
                 },
                 {
                     "name": "Haemul Jeon (Seafood)",
                     "cost": "15.95",
-                    "description": "Pan fried savory korean pancake with squid, shrimp, and green onion"
+                    "description": "Pan fried savory korean pancake with squid, shrimp, and green onion",
+                    "korean": "해물파전"
                 }
             ]
         },
@@ -311,27 +330,32 @@
                 {
                     "name": "Beef Bulgogi Dosiiroc",
                     "cost": "16.95",
-                    "description": ""
+                    "description": "",
+                    "korean": "불고기"
                 },
                 {
                     "name": "Spicy Pork Bulgogi Dosiiroc",
                     "cost": "14.95",
-                    "description": ""
+                    "description": "",
+                    "korean": "돼지 불고기"
                 },
                 {
                     "name": "Chicken Bulgogi Dosiiroc",
                     "cost": "14.95",
-                    "description": ""
+                    "description": "",
+                    "korean": "치킨 불고기"
                 },
                 {
                     "name": "Fried Tofu Dosiiroc",
                     "cost": "14.95",
-                    "description": "Your choice of sauce (either bulgogi or dosiiroc secret sauce)"
+                    "description": "Your choice of sauce (either bulgogi or dosiiroc secret sauce)",
+                    "korean": "두부 튀김"
                 },
                 {
-                    "name": "Korean Fried Chicken Dosiiroc",
+                    "name": "Korean Boneless Fried Chicken Dosiiroc",
                     "cost": "14.95",
-                    "description": "Your choice of sauce (either honey garlic or dosiiroc secret sauce)"
+                    "description": "Your choice of sauce (either honey garlic or dosiiroc secret sauce)",
+                    "korean": "순살 치킨"
                 }
             ],
             "egg_price": "2.50"
