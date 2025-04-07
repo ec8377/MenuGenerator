@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "BFaBiUpNM8o=",
+  "dgSpecHash": "1UXZsEBMPXw=",
   "success": true,
   "projectFilePath": "/Users/echun/Desktop/actual repos/MenuGenerator/MenuGenerator/MenuGenerator.csproj",
   "expectedPackageFiles": [
@@ -9,9 +9,8 @@
     "/Users/echun/.nuget/packages/skiasharp.nativeassets.linux.nodependencies/3.116.1/skiasharp.nativeassets.linux.nodependencies.3.116.1.nupkg.sha512",
     "/Users/echun/.nuget/packages/skiasharp.nativeassets.macos/3.116.1/skiasharp.nativeassets.macos.3.116.1.nupkg.sha512",
     "/Users/echun/.nuget/packages/skiasharp.nativeassets.win32/3.116.1/skiasharp.nativeassets.win32.3.116.1.nupkg.sha512",
-    "/Users/echun/.nuget/packages/microsoft.netcore.app.runtime.linux-x64/9.0.3/microsoft.netcore.app.runtime.linux-x64.9.0.3.nupkg.sha512",
-    "/Users/echun/.nuget/packages/microsoft.aspnetcore.app.runtime.linux-x64/9.0.3/microsoft.aspnetcore.app.runtime.linux-x64.9.0.3.nupkg.sha512",
-    "/Users/echun/.nuget/packages/microsoft.netcore.app.host.linux-x64/9.0.3/microsoft.netcore.app.host.linux-x64.9.0.3.nupkg.sha512"
+    "/Users/echun/.nuget/packages/microsoft.netcore.app.runtime.osx-arm64/9.0.3/microsoft.netcore.app.runtime.osx-arm64.9.0.3.nupkg.sha512",
+    "/Users/echun/.nuget/packages/microsoft.aspnetcore.app.runtime.osx-arm64/9.0.3/microsoft.aspnetcore.app.runtime.osx-arm64.9.0.3.nupkg.sha512"
   ],
   "logs": []
 }
