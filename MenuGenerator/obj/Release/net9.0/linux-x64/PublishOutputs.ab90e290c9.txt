@@ -1,0 +1,2 @@
+/Users/echun/Desktop/actual repos/MenuGenerator/MenuGenerator/bin/Release/net9.0/linux-x64/publish/MenuGenerator.pdb
+/Users/echun/Desktop/actual repos/MenuGenerator/MenuGenerator/bin/Release/net9.0/linux-x64/publish/MenuGenerator
