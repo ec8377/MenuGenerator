@@ -11,6 +11,7 @@
         "dependencies": {
           "Microsoft.NET.ILLink.Tasks": "9.0.3",
           "SkiaSharp": "3.116.1",
+          "SkiaSharp.NativeAssets.Linux.NoDependencies": "3.116.1",
           "runtimepack.Microsoft.NETCore.App.Runtime.linux-x64": "9.0.3"
         },
         "runtime": {
@@ -710,6 +711,13 @@
           }
         }
       },
+      "SkiaSharp.NativeAssets.Linux.NoDependencies/3.116.1": {
+        "native": {
+          "runtimes/linux-x64/native/libSkiaSharp.so": {
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
       "SkiaSharp.NativeAssets.macOS/3.116.1": {},
       "SkiaSharp.NativeAssets.Win32/3.116.1": {}
     }
@@ -738,6 +746,13 @@
       "sha512": "sha512-DNDwbRjP+aMo27dV2h/uHCVTcWubWWxHnPLiePNyl24f4Pv43mQ8AQQeseOrKR+J3AOCEs6t0sUjo0aa3j3RWQ==",
       "path": "skiasharp/3.116.1",
       "hashPath": "skiasharp.3.116.1.nupkg.sha512"
+    },
+    "SkiaSharp.NativeAssets.Linux.NoDependencies/3.116.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-yER+zmZzK4G642j0fbOBg3ZfLUs93o1kmHEXEOPZgMCzGVSmLvGmsFYIIlIQaMEpWY/TktFiZGqEKkT1RJ/YjQ==",
+      "path": "skiasharp.nativeassets.linux.nodependencies/3.116.1",
+      "hashPath": "skiasharp.nativeassets.linux.nodependencies.3.116.1.nupkg.sha512"
     },
     "SkiaSharp.NativeAssets.macOS/3.116.1": {
       "type": "package",

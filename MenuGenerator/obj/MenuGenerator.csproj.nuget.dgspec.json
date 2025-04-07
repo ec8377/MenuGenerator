@@ -53,6 +53,10 @@
             "SkiaSharp": {
               "target": "Package",
               "version": "[3.116.1, )"
+            },
+            "SkiaSharp.NativeAssets.Linux.NoDependencies": {
+              "target": "Package",
+              "version": "[3.116.1, )"
             }
           },
           "imports": [

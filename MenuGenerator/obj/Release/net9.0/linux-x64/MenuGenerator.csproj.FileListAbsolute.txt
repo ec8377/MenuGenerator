@@ -200,3 +200,4 @@
 /Users/echun/Desktop/actual repos/MenuGenerator/MenuGenerator/obj/Release/net9.0/linux-x64/MenuGenerator.pdb
 /Users/echun/Desktop/actual repos/MenuGenerator/MenuGenerator/obj/Release/net9.0/linux-x64/MenuGenerator.genruntimeconfig.cache
 /Users/echun/Desktop/actual repos/MenuGenerator/MenuGenerator/obj/Release/net9.0/linux-x64/ref/MenuGenerator.dll
+/Users/echun/Desktop/actual repos/MenuGenerator/MenuGenerator/bin/Release/net9.0/linux-x64/libSkiaSharp.so
