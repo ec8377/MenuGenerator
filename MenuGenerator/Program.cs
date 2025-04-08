@@ -5,13 +5,13 @@ namespace MenuGenerator {
     class MenuGenerator {
         public class Menu {
             public List<Category>? Categories { get; set; }
-            public string? egg_price { get; set; }
         }
 
         public class Category {
             public string? Name { get; set; }
             public string? Type { get; set; }
             public List<MenuItem>? Items { get; set; }
+            public string? egg_price { get; set; }
         }
 
         public class MenuItem {
@@ -215,7 +215,7 @@ namespace MenuGenerator {
                     }
 
                     y += padding;
-                    canvas.DrawText("add a fried egg for $" + menu.egg_price, boxRect.MidX - kollektifBoldPaint.MeasureText("add a fried egg for $2.49")/2, y, kollektifBoldPaint);
+                    canvas.DrawText("add a fried egg for $" + category.egg_price, boxRect.MidX - kollektifBoldPaint.MeasureText("add a fried egg for $2.49")/2, y, kollektifBoldPaint);
                 }
                 else if (category.Name == "Appetizers") {
                     x = 159;
