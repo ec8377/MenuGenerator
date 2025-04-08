@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using System.Runtime.CompilerServices;
+using System.Text.Json;
 using SkiaSharp;
 
 namespace MenuGenerator {
@@ -169,6 +170,13 @@ namespace MenuGenerator {
                 else {
                     drinks.Add(category);
                 }
+
+                foreach(MenuItem item in category.Items) {
+                    if (!item.Description.EndsWith('.')) {
+                        item.Description += '.';
+                    }
+
+                }
             }
 
             foreach(Category category in foods) {
@@ -206,11 +214,11 @@ namespace MenuGenerator {
 
                         if(temp.Name == "Fried Tofu") {
                             y += padding - 30;
-                            canvas.DrawText("-> sauce: bulgogi / dosiiroc secret sauces", x + 30, y, kollektifPaint);
+                            canvas.DrawText("-> sauce: bulgogi / dosiiroc secret sauce🌶", x + 30, y, kollektifPaint);
                         }
                         else if (temp.Name == "Korean Boneless Fried Chicken") {
                             y += padding - 30;
-                            canvas.DrawText("-> sauce: honey garlic / dosiiroc secret sauces", x + 30, y, kollektifPaint);
+                            canvas.DrawText("-> sauce: honey garlic / dosiiroc secret sauce🌶", x + 30, y, kollektifPaint);
                         }
                     }
 
@@ -333,7 +341,7 @@ namespace MenuGenerator {
                         index++;
 
                         if (item.Name.Contains("Korean")) {
-                            canvas.DrawText("-> sauce: honey garlic / dosiiroc secret sauces", x + 30, y - 10, kollektifPaint);
+                            canvas.DrawText("-> sauce: honey garlic / dosiiroc secret sauce", x + 30, y - 10, kollektifPaint);
                             y += kollektifBoldPaint.TextSize + 30;
                         }
                     }
@@ -396,7 +404,7 @@ namespace MenuGenerator {
                     canvas.DrawText("+$5.95", x - kollektifBoldPaint.MeasureText("+") + 1100, y, kollektifBoldPaint);
 
                     y += kollektifPaint.TextSize + 20;
-                        y = drawTextWrap(canvas, x, y, x + 1100, kollektifPaint, "make your own bbq ssam (korean lettuce wraps) includes sliced chili peppers, garlic, and ssamjang sauce");
+                        y = drawTextWrap(canvas, x, y, x + 1100, kollektifPaint, "make your own bbq ssam (korean lettuce wraps) includes sliced chili peppers, garlic, and ssamjang sauce.");
 
                 }
             }
