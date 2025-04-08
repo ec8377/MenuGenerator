@@ -20,3 +20,7 @@
 /Users/echun/Desktop/actual repos/MenuGenerator/MenuGenerator/obj/Debug/net9.0/MenuGenerator.csproj.AssemblyReference.cache
 /Users/echun/Desktop/actual repos/MenuGenerator/MenuGenerator/obj/Debug/net9.0/MenuGene.75219E50.Up2Date
 /Users/echun/Desktop/actual repos/MenuGenerator/MenuGenerator/obj/Debug/net9.0/MenuGenerator.sourcelink.json
+/Users/echun/Desktop/actual repos/MenuGenerator/MenuGenerator/bin/Debug/net9.0/runtimes/linux-arm/native/libSkiaSharp.so
+/Users/echun/Desktop/actual repos/MenuGenerator/MenuGenerator/bin/Debug/net9.0/runtimes/linux-arm64/native/libSkiaSharp.so
+/Users/echun/Desktop/actual repos/MenuGenerator/MenuGenerator/bin/Debug/net9.0/runtimes/linux-musl-x64/native/libSkiaSharp.so
+/Users/echun/Desktop/actual repos/MenuGenerator/MenuGenerator/bin/Debug/net9.0/runtimes/linux-x64/native/libSkiaSharp.so

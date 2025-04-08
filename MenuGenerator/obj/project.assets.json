@@ -89,7 +89,7 @@
         }
       }
     },
-    "net9.0/osx-arm64": {
+    "net9.0/linux-x64": {
       "Microsoft.NET.ILLink.Tasks/9.0.3": {
         "type": "package",
         "build": {
@@ -118,6 +118,9 @@
         },
         "runtime": {
           "lib/net8.0/_._": {}
+        },
+        "native": {
+          "runtimes/linux-x64/native/libSkiaSharp.so": {}
         }
       },
       "SkiaSharp.NativeAssets.macOS/3.116.1": {
@@ -127,9 +130,6 @@
         },
         "runtime": {
           "lib/net8.0/_._": {}
-        },
-        "native": {
-          "runtimes/osx/native/libSkiaSharp.dylib": {}
         }
       },
       "SkiaSharp.NativeAssets.Win32/3.116.1": {
@@ -401,11 +401,15 @@
         "warn": true,
         "downloadDependencies": [
           {
-            "name": "Microsoft.AspNetCore.App.Runtime.osx-arm64",
+            "name": "Microsoft.AspNetCore.App.Runtime.linux-x64",
             "version": "[9.0.3, 9.0.3]"
           },
           {
-            "name": "Microsoft.NETCore.App.Runtime.osx-arm64",
+            "name": "Microsoft.NETCore.App.Host.linux-x64",
+            "version": "[9.0.3, 9.0.3]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Runtime.linux-x64",
             "version": "[9.0.3, 9.0.3]"
           }
         ],
@@ -418,7 +422,7 @@
       }
     },
     "runtimes": {
-      "osx-arm64": {
+      "linux-x64": {
         "#import": []
       }
     }

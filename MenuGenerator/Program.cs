@@ -158,8 +158,19 @@ namespace MenuGenerator {
             int index = 0;
             int startingx = 0;
             int startingy = 0;
+            List<Category> foods = new();
+            List<Category> drinks = new();
 
-            foreach(Category category in menu.Categories) {
+            foreach (Category category in menu.Categories) {
+                if (category.Type == "Food") {
+                    foods.Add(category);
+                }
+                else {
+                    drinks.Add(category);
+                }
+            }
+
+            foreach(Category category in foods) {
                 if (category.Name == "Dosiiroc Boxes") {
                     x = 200;
                     y = 600;
