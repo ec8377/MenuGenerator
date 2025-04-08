@@ -1,2 +1,2 @@
-bin
-obj
+MenuGenerator/bin/** 
+MenuGenerator/obj/** 
