@@ -1,9 +1,19 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System.ComponentModel;
 using System.Text.Json;
+using Microsoft.VisualBasic;
 using SkiaSharp;
 
 namespace MenuGenerator {
     class MenuGenerator {
+        private static SKTypeface EMOJI_FONT = SKTypeface.FromFile("fonts/NotoColorEmoji-Regular.ttf");
+        private static SKPaint EMOJI_PAINT = new SKPaint
+        {
+            Color = SKColors.Black,
+            TextSize = 50,
+            Typeface = EMOJI_FONT,
+            IsAntialias = true
+        };
+
         public class Menu {
             public List<Category>? Categories { get; set; }
         }
@@ -110,7 +120,7 @@ namespace MenuGenerator {
                 Typeface = NanumGothicBold,
                 IsAntialias = true
             };
-
+            
             SKPaint black = new SKPaint {
                 Color = SKColors.Black
             };
@@ -127,32 +137,61 @@ namespace MenuGenerator {
                 Color = new SKColor(255,253,249)
             };
 
-            kollektifBoldPaint.TextSize = DESCRIPTION_FONT_SIZE;
-            
-            canvas.DrawRect(150, 300, 250, 15, black);
-            canvas.DrawRect(1800, 300, width-150-1800, 15, black);
-            canvas.DrawRect(width-150-450, height-150, 450, 15, black);
-            canvas.DrawRect(150, height-150, width-150-1600, 15, black);
             SKRect boxRect = new SKRect(150, 465, 2250, 1800);
-            canvas.DrawRect(boxRect, brown);
-            canvas.DrawText("menu", 525, 400, sceageusPaint);
-            canvas.DrawText("dosiiroccafe.com | @dosiiroccafe", (width-1600)+((width-150-450) - (width-1600))/2 - kollektifBoldPaint.MeasureText("dosiiroccafe.com | @dosiiroccafe")/2, height-150+kollektifBoldPaint.TextSize/2, kollektifBoldPaint);
-            canvas.DrawText("If you have a food allergy or any dietary restriction/preference, please notfiy us. We will do our best to accomodate you.", 150, 2950, kollektifBoldPaint);
 
-           SKBitmap logo = SKBitmap.Decode("images/face logo.png");
-            
-            SKImageInfo info = new SKImageInfo(370, 414, SKColorType.Argb4444);
-            logo = logo.Resize(info, SKFilterQuality.High);
+            if(!args.Contains("drinks")) {
+                kollektifBoldPaint.TextSize = DESCRIPTION_FONT_SIZE;
+                
+                canvas.DrawRect(150, 300, 250, 15, black);
+                canvas.DrawRect(1800, 300, width-150-1800, 15, black);
+                canvas.DrawRect(width-150-450, height-150, 450, 15, black);
+                canvas.DrawRect(150, height-150, width-150-1600, 15, black);
+                canvas.DrawRect(boxRect, brown);
+                canvas.DrawText("menu", 525, 400, sceageusPaint);
+                canvas.DrawText("dosiiroccafe.com | @dosiiroccafe", (width-1600)+((width-150-450) - (width-1600))/2 - kollektifBoldPaint.MeasureText("dosiiroccafe.com | @dosiiroccafe")/2, height-150+kollektifBoldPaint.TextSize/2, kollektifBoldPaint);
+                canvas.DrawText("If you have a food allergy or any dietary restriction/preference, please notfiy us. We will do our best to accomodate you.", 150, 2950, kollektifBoldPaint);
 
-            SKColor logoColor = new SKColor(255, 227, 194);
-            
-            canvas.DrawCircle(width-387, 300, 475/2, black);
+                SKBitmap logo = SKBitmap.Decode("images/face logo.png");
+                
+                SKImageInfo info = new SKImageInfo(370, 414, SKColorType.Argb4444);
+                logo = logo.Resize(info, SKFilterQuality.High);
 
-            using (SKPaint paint = new SKPaint() { Color = logoColor }) {
-                canvas.DrawCircle(width-387, 300, 450/2, paint);
-            };
+                SKColor logoColor = new SKColor(255, 227, 194);
+                
+                canvas.DrawCircle(width-387, 300, 475/2, black);
 
-            canvas.DrawBitmap(logo, width-387-info.Width/2, 300-info.Height/2);
+                using (SKPaint paint = new SKPaint() { Color = logoColor }) {
+                    canvas.DrawCircle(width-387, 300, 450/2, paint);
+                };
+
+                canvas.DrawBitmap(logo, width-387-info.Width/2, 300-info.Height/2);
+            }
+            else {
+                kollektifBIPaint.TextSize = 100;
+
+                canvas.DrawRect(150, 300, 2050, 15, black);
+                canvas.DrawRect(width-150-320, 300, 320, 15, black);
+                canvas.DrawRect(width-150-450, height-150, 450, 15, black);
+                canvas.DrawRect(150, height-150, width-150-1600, 15, black);
+
+                canvas.DrawText("cafe menu", 2200+1305-sceageusPaint.MeasureText("cafe menu")/2, 300+sceageusPaint.TextSize/4, sceageusPaint);
+                using (SKPaint red = new SKPaint { Color = new SKColor(230, 60, 59), Typeface = KollektifBI, TextSize = 100 }) {
+                    canvas.DrawText("hot drinks ", 2200+1305-sceageusPaint.MeasureText("caf")/2-165, 300+sceageusPaint.TextSize/4+95, red);
+                };
+
+                canvas.DrawText(" - 12oz / ", 2200+1305-sceageusPaint.MeasureText("caf")/2-165+kollektifBIPaint.MeasureText("hot drinks"), 300+sceageusPaint.TextSize/4+95, kollektifBIPaint);
+
+                using (SKPaint blue = new SKPaint { Color = new SKColor(86, 123, 170), Typeface = KollektifBI, TextSize = 100}) {
+                    blue.Color = new SKColor(86, 123, 170);
+
+                    canvas.DrawText("iced drinks", 2200+1305-sceageusPaint.MeasureText("caf")/2-165+kollektifBIPaint.MeasureText("hot drinks - 12oz / "), 300+sceageusPaint.TextSize/4+95, blue);
+                }
+
+                canvas.DrawText(" - 16oz", 2200+1305-sceageusPaint.MeasureText("caf")/2-165+kollektifBIPaint.MeasureText("hot drinks - 12oz / iced drinks"), 300+sceageusPaint.TextSize/4+95, kollektifBIPaint);
+
+                canvas.DrawText("dosiiroccafe.com | @dosiiroccafe", (width-1600)+((width-150-450) - (width-1600))/2 - kollektifBoldPaint.MeasureText("dosiiroccafe.com | @dosiiroccafe")/2, height-150+kollektifBoldPaint.TextSize/2, kollektifBoldPaint);
+                canvas.DrawText("If you have a food allergy or any dietary restriction/preference, please notfiy us. We will do our best to accomodate you.", 150, 2950, kollektifBoldPaint);
+            }
 
             float x = 0;
             float y = 0;
@@ -162,6 +201,14 @@ namespace MenuGenerator {
             int startingy = 0;
             List<Category> foods = new();
             List<Category> drinks = new();
+            List<Category> choice = new();
+
+            if (args.Contains("drinks")) {
+                choice = drinks;
+            }
+            else {
+                choice = foods;
+            }
 
             foreach (Category category in menu.Categories) {
                 if (category.Type == "Food") {
@@ -172,14 +219,13 @@ namespace MenuGenerator {
                 }
 
                 foreach(MenuItem item in category.Items) {
-                    if (!item.Description.EndsWith('.')) {
-                        item.Description += '.';
+                    if (item.Description.EndsWith('.')) {
+                        item.Description.TrimEnd('.');
                     }
-
                 }
             }
 
-            foreach(Category category in foods) {
+            foreach(Category category in choice) {
                 if (category.Name == "Dosiiroc Boxes") {
                     x = 200;
                     y = 600;
@@ -214,11 +260,14 @@ namespace MenuGenerator {
 
                         if(temp.Name == "Fried Tofu") {
                             y += padding - 30;
-                            canvas.DrawText("-> sauce: bulgogi / dosiiroc secret sauce🌶", x + 30, y, kollektifPaint);
+                            canvas.DrawText("-> sauce: bulgogi / dosiiroc secret sauce", x + 30, y, kollektifPaint);
                         }
                         else if (temp.Name == "Korean Boneless Fried Chicken") {
                             y += padding - 30;
-                            canvas.DrawText("-> sauce: honey garlic / dosiiroc secret sauce🌶", x + 30, y, kollektifPaint);
+                            text = "-> sauce: honey garlic / dosiiroc secret sauce";
+                            canvas.DrawText(text, x + 30, y, kollektifPaint);
+                            EMOJI_PAINT.TextSize = DESCRIPTION_FONT_SIZE;
+                            canvas.DrawText("🌶", x + 30 + kollektifPaint.MeasureText(text), y, EMOJI_PAINT);
                         }
                     }
 
@@ -243,7 +292,7 @@ namespace MenuGenerator {
                         canvas.DrawText('$' + item.Cost, x + 850, y, kollektifBoldPaint);
                         
                         y += kollektifPaint.TextSize + 20;
-                        y = drawTextWrap(canvas, x, y, x + 800, kollektifPaint, item.Description.ToLower());
+                        y = drawTextWrap(canvas, x, y, x + 950, kollektifPaint, item.Description.ToLower());
                         y += kollektifBoldPaint.TextSize + 30;
                         index++;
                         if (index == 3) {
@@ -251,8 +300,6 @@ namespace MenuGenerator {
                             y = 1950 + kollektifBoldPaint.TextSize + 30;
                         }
                     }
-
-                    
 
                     canvas.DrawRect(x, y, 1050, 130, orange);
                     canvas.DrawRect(x+15, y+15, 1050-30, 130-30, offwhite);
@@ -404,8 +451,260 @@ namespace MenuGenerator {
                     canvas.DrawText("+$5.95", x - kollektifBoldPaint.MeasureText("+") + 1100, y, kollektifBoldPaint);
 
                     y += kollektifPaint.TextSize + 20;
-                        y = drawTextWrap(canvas, x, y, x + 1100, kollektifPaint, "make your own bbq ssam (korean lettuce wraps) includes sliced chili peppers, garlic, and ssamjang sauce.");
+                    y = drawTextWrap(canvas, x, y, x + 1100, kollektifPaint, "make your own bbq ssam (korean lettuce wraps) includes sliced chili peppers, garlic, and ssamjang sauce.");
 
+                }
+                else if (category.Name == "Stews") {
+                    startingx = 150;
+                    x = 150;
+                    y = 500;
+                    startingy = 500;
+                    padding = PADDING_SIZE;
+
+                    kollektifBoldPaint.TextSize = CATEGORY_FONT_SIZE;
+                    kollektifPaint.TextSize = DESCRIPTION_FONT_SIZE;
+
+                    canvas.DrawText(category.Name.ToUpper(), x, y, kollektifBoldPaint);
+
+                    kollektifBoldPaint.TextSize = ITEM_NAME_FONT_SIZE;
+
+                    y += kollektifBoldPaint.TextSize + 30;
+
+                    foreach(MenuItem item in category.Items) {
+                        drawWithKorean(canvas, x, y, kollektifBoldPaint, nanumGothicBoldPaint, item.Name.ToUpper(), item.Korean);
+                        canvas.DrawText('$' + item.Cost, x + 1100, y, kollektifBoldPaint);
+
+                        if(item.Name.Equals("Kimchi Jjigae")) {
+                            y += padding - 30;
+                            canvas.DrawText("-> PORK / TUNA", x + 30, y, kollektifPaint);
+                            
+                            y += kollektifPaint.TextSize + 20;
+                            y = drawTextWrap(canvas, x, y, x + 1100, kollektifPaint, item.Description.ToLower().Remove(item.Description.LastIndexOf(" with your")));
+                        }
+                        else if(item.Name.Equals("Dwenjang Jjigae")) {
+                            y += padding - 30;
+                            canvas.DrawText("-> VEGGIE / BEEF +$1.50", x + 30, y, kollektifPaint);
+
+                            y += kollektifPaint.TextSize + 20;
+                            y = drawTextWrap(canvas, x, y, x + 1100, kollektifPaint, item.Description.ToLower().Remove(item.Description.LastIndexOf(" with your")));
+                        }
+                        else if(item.Name.Equals("Soondubu Jjigae")) {
+                            y += padding - 30;
+                            canvas.DrawText("-> VEGGIE / PORK +$1.50 / SEAFOOD +$2", x + 30, y, kollektifPaint);
+
+                            y += kollektifPaint.TextSize + 20;
+                            y = drawTextWrap(canvas, x, y, x + 1100, kollektifPaint, item.Description.ToLower().Remove(item.Description.LastIndexOf(" with your")));
+                        }
+                        else {
+                            y += kollektifPaint.TextSize + 20;
+                            y = drawTextWrap(canvas, x, y, x + 1100, kollektifPaint, item.Description.ToLower());
+                        }
+                        
+                        
+                        y += kollektifBoldPaint.TextSize + 30;
+                    }
+                }
+                else if (category.Name == "Katsu Cutlets") {
+                    startingx = 150;
+                    x = 150;
+                    y = 2500;
+                    startingy = 2500;
+                    padding = PADDING_SIZE;
+
+                    kollektifBoldPaint.TextSize = CATEGORY_FONT_SIZE;
+                    kollektifPaint.TextSize = DESCRIPTION_FONT_SIZE;
+
+                    canvas.DrawText(category.Name.ToUpper(), x, y, kollektifBoldPaint);
+
+                    kollektifBoldPaint.TextSize = ITEM_NAME_FONT_SIZE;
+
+                    y += kollektifBoldPaint.TextSize;
+
+                    y = drawTextWrap(canvas, x, y, x + 1100, kollektifPaint, "deep fried cutlet topped with home made roux sauce and served with a side of cabbage slaw");
+
+                    y += kollektifBoldPaint.TextSize + 30;
+                    foreach(MenuItem item in category.Items) {
+                        drawWithKorean(canvas, x, y, kollektifBoldPaint, nanumGothicBoldPaint, item.Name.ToUpper(), item.Korean);
+                        canvas.DrawText('$' + item.Cost, x + 1100, y, kollektifBoldPaint);
+
+                        y += kollektifBoldPaint.TextSize + 30;
+                    }
+                }
+                else if (category.Name == "Coffee") {
+                    startingx = 1700;
+                    x = 1700;
+                    y = 550;
+                    startingy = 550;
+                    padding = PADDING_SIZE;
+
+                    kollektifBoldPaint.TextSize = CATEGORY_FONT_SIZE;
+                    kollektifPaint.TextSize = DESCRIPTION_FONT_SIZE;
+
+                    canvas.DrawText(category.Name.ToUpper() + " (", x, y, kollektifBoldPaint);
+
+                    text = category.Name.ToUpper();
+
+                    using (SKPaint red = new SKPaint { Color = new SKColor(230, 60, 59), Typeface = KollektifBold, TextSize = CATEGORY_FONT_SIZE}) {
+                        canvas.DrawText("hot", startingx+kollektifBoldPaint.MeasureText(text + " ("), y, red);
+                    };
+
+                    canvas.DrawText("/", startingx+kollektifBoldPaint.MeasureText(text + " (hot"), y, kollektifBIPaint);
+
+                    using (SKPaint blue = new SKPaint { Color = new SKColor(86, 123, 170), Typeface = KollektifBold, TextSize = CATEGORY_FONT_SIZE}) {
+                        blue.Color = new SKColor(86, 123, 170);
+
+                        canvas.DrawText("iced", startingx+kollektifBoldPaint.MeasureText(text + " (hot/"), y, blue);
+                    }
+
+                    canvas.DrawText(")", startingx+kollektifBoldPaint.MeasureText(text + " (hot/iced"), y, kollektifBIPaint);
+
+
+
+                    kollektifBoldPaint.TextSize = ITEM_NAME_FONT_SIZE;
+
+                    y += kollektifBoldPaint.TextSize + 30;
+
+                    foreach(MenuItem item in category.Items) {
+                        drawWithKorean(canvas, x, y, kollektifBoldPaint, nanumGothicBoldPaint, item.Name.ToUpper(), item.Korean);
+                        canvas.DrawText('$' + item.Cost, x + 1100, y, kollektifBoldPaint);
+                        
+                        y += kollektifPaint.TextSize + 20;
+                        if (item.Description.Contains("(hot/iced)")) {
+                            y = drawTextWrap(canvas, x, y, x + 1100, kollektifPaint, item.Description.ToLower().Remove(item.Description.LastIndexOf("(hot/iced)")));
+                        }
+                        else {
+                            y = drawTextWrap(canvas, x, y, x + 1100, kollektifPaint, item.Description.ToLower());
+                        }
+                        y += kollektifBoldPaint.TextSize + 30;
+                    }
+                }
+                else if (category.Name == "Tea") {
+                    startingx = 1700;
+                    x = 1700;
+                    y = 1550;
+                    startingy = 1550;
+                    padding = PADDING_SIZE;
+
+                    kollektifBoldPaint.TextSize = CATEGORY_FONT_SIZE;
+                    kollektifPaint.TextSize = DESCRIPTION_FONT_SIZE;
+
+                    canvas.DrawText(category.Name.ToUpper() + " (", x, y, kollektifBoldPaint);
+
+                    text = category.Name.ToUpper();
+
+                    using (SKPaint red = new SKPaint { Color = new SKColor(230, 60, 59), Typeface = KollektifBold, TextSize = CATEGORY_FONT_SIZE}) {
+                        canvas.DrawText("hot", startingx+kollektifBoldPaint.MeasureText(text + " ("), y, red);
+                    };
+
+                    canvas.DrawText("/", startingx+kollektifBoldPaint.MeasureText(text + " (hot"), y, kollektifBIPaint);
+
+                    using (SKPaint blue = new SKPaint { Color = new SKColor(86, 123, 170), Typeface = KollektifBold, TextSize = CATEGORY_FONT_SIZE}) {
+                        blue.Color = new SKColor(86, 123, 170);
+
+                        canvas.DrawText("iced", startingx+kollektifBoldPaint.MeasureText(text + " (hot/"), y, blue);
+                    }
+
+                    canvas.DrawText(")", startingx+kollektifBoldPaint.MeasureText(text + " (hot/iced"), y, kollektifBIPaint);
+
+
+
+                    kollektifBoldPaint.TextSize = ITEM_NAME_FONT_SIZE;
+
+                    y += kollektifBoldPaint.TextSize + 30;
+
+                    foreach(MenuItem item in category.Items) {
+                        drawWithKorean(canvas, x, y, kollektifBoldPaint, nanumGothicBoldPaint, item.Name.ToUpper(), item.Korean);
+                        canvas.DrawText('$' + item.Cost, x + 1100, y, kollektifBoldPaint);
+                        
+                        y += kollektifPaint.TextSize + 20;
+                        if (item.Description.Contains("(hot/iced)")) {
+                            y = drawTextWrap(canvas, x, y, x + 1100, kollektifPaint, item.Description.ToLower().Remove(item.Description.LastIndexOf("(hot/iced)")));
+                        }
+                        else {
+                            y = drawTextWrap(canvas, x, y, x + 1100, kollektifPaint, item.Description.ToLower());
+                        }
+                        y += kollektifBoldPaint.TextSize + 30;
+                    }
+
+                    x = startingx + 1250/2;
+                    y += 45;
+                    kollektifBIPaint.TextSize = 95;
+
+                    text = "add a shot for $1";
+                    canvas.DrawText(text, x - kollektifBIPaint.MeasureText(text)/2, y, kollektifBIPaint);
+
+                    y += 75;
+
+                    kollektifBIPaint.TextSize = 65;
+
+                    canvas.DrawRect(x-450, y, 900, 300, black);
+                    canvas.DrawRect(x-440, y+10, 880, 280, brown);
+
+                    text = "we use lactose-free milk.";
+                    y += kollektifBIPaint.TextSize+20;
+                    canvas.DrawText(text, x-kollektifBIPaint.MeasureText(text)/2, y, kollektifBIPaint);
+
+                    text = "swap to oat milk for an";
+                    y += kollektifBIPaint.TextSize+20;
+                    canvas.DrawText(text, x-kollektifBIPaint.MeasureText(text)/2, y, kollektifBIPaint);
+
+                    text = "additional 75¢";
+                    y += kollektifBIPaint.TextSize+20;
+                    canvas.DrawText(text, x-kollektifBIPaint.MeasureText(text)/2, y, kollektifBIPaint);
+                }
+                else if (category.Name == "Specialties") {
+                    startingx = 3000;
+                    x = 3000;
+                    y = 550;
+                    startingy = 550;
+                    padding = PADDING_SIZE;
+
+                    kollektifBoldPaint.TextSize = CATEGORY_FONT_SIZE;
+                    kollektifPaint.TextSize = DESCRIPTION_FONT_SIZE;
+
+                    canvas.DrawRect(x+300, y, 1300, 600, orange);
+                    canvas.DrawRect(x+310, y+10, 1280, 580, offwhite);
+
+                    text = "SOFT DRINKS";
+
+                    canvas.DrawText(text, x+300+1280/2 - kollektifBoldPaint.MeasureText(text)/2, y + 30+kollektifBoldPaint.TextSize, kollektifBoldPaint);
+
+                    kollektifBoldPaint.TextSize = DESCRIPTION_FONT_SIZE;
+
+                    List<string> col1 = ["coca cola", "diet coke", "sprite", "ginger ale", "orange soda"];
+                    List<string> col2 = ["sikhye", "milkis", "2% (peach)", "grape bongbong"];
+                    List<string> col3 = ["watermelon soda", "calamansi soda", "peach bongbong", "jeju hallabong soda"];
+
+                    text = "$1.99 / can";
+                    canvas.DrawText(text, x+310+250-kollektifBoldPaint.MeasureText(text)/2, y+220, kollektifBoldPaint);
+                    canvas.DrawLine(x+310+250-kollektifBoldPaint.MeasureText(text)/2, y+225, x+310+250+kollektifBoldPaint.MeasureText(text)/2, y+225, black);
+                    y += kollektifBoldPaint.TextSize + 5;
+
+                    foreach (string drink in col1) {
+                        canvas.DrawText(drink, x+310+250-kollektifBoldPaint.MeasureText(drink)/2, y+220, kollektifBoldPaint);
+                        y += kollektifBoldPaint.TextSize + 5;
+                    }
+
+                    y += 1000;
+                    canvas.DrawText("DOSIIROC " + category.Name.ToUpper(), x, y, kollektifBoldPaint);
+
+                    kollektifBoldPaint.TextSize = ITEM_NAME_FONT_SIZE;
+
+                    y += kollektifBoldPaint.TextSize + 30;
+
+                    foreach(MenuItem item in category.Items) {
+                        drawWithKorean(canvas, x, y, kollektifBoldPaint, nanumGothicBoldPaint, item.Name.ToUpper(), item.Korean);
+                        canvas.DrawText('$' + item.Cost, x + 1100, y, kollektifBoldPaint);
+
+                        y += kollektifPaint.TextSize + 20;
+                        if (item.Description.Contains("(hot/iced)")) {
+                            y = drawTextWrap(canvas, x, y, x + 1100, kollektifPaint, item.Description.ToLower().Remove(item.Description.LastIndexOf("(hot/iced)")));
+                        }
+                        else {
+                            y = drawTextWrap(canvas, x, y, x + 1100, kollektifPaint, item.Description.ToLower());
+                        }
+                        y += kollektifBoldPaint.TextSize + 30;
+                    }
                 }
             }
 
@@ -417,11 +716,24 @@ namespace MenuGenerator {
 
         // returns the y value that the final word is on
         public static float drawTextWrap(SKCanvas canvas, float startingx, float y, float boundaryx, SKPaint paint, string text, float padding = 20) {
+            bool hasPeriod = text.EndsWith('.');
             string[] words = text.Split(" ");
             float x = startingx;
             float word_length = 0; 
 
             foreach (string word in words) {
+                if (word.Contains("🌶")) {
+                    word_length = EMOJI_PAINT.MeasureText(word + " ");
+
+                    x += word_length;
+                    if (x >= boundaryx) {
+                        x = startingx + word_length;
+                        y += paint.TextSize + padding;
+                    }
+                    canvas.DrawText("🌶", x - word_length, y, EMOJI_PAINT);
+                    canvas.DrawText(".", x - word_length + EMOJI_PAINT.MeasureText("🌶"), y, paint);
+                    continue;
+                }
                 word_length = paint.MeasureText(word + " ");
 
                 x += word_length;
@@ -431,7 +743,7 @@ namespace MenuGenerator {
                 }
                 canvas.DrawText(word + " ", x - word_length, y, paint);
             }
-
+            
             return y;
         }
 
