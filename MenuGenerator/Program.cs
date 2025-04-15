@@ -487,7 +487,7 @@ namespace MenuGenerator {
                     startingy = 500;
                     padding = PADDING_SIZE;
 
-                    for (float circlex = x + (args.Contains("0") ? -200 : 1300), circley = 400; circley < 2900; circley += 100) {
+                    for (float circlex = x + (args.Contains("0") ? -200 : 1500), circley = 400; circley < 2900; circley += 100) {
                         canvas.DrawCircle(circlex, circley, 10, black);
                     }
 
