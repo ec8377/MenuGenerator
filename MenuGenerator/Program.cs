@@ -23,6 +23,7 @@ namespace MenuGenerator {
             public string? Type { get; set; }
             public List<MenuItem>? Items { get; set; }
             public string? egg_price { get; set; }
+            public string? ade_price { get; set; }
         }
 
         public class MenuItem {
@@ -202,6 +203,7 @@ namespace MenuGenerator {
             List<Category> foods = new();
             List<Category> drinks = new();
             List<Category> choice = new();
+            Category korean_ade = new();
 
             if (args.Contains("drinks")) {
                 choice = drinks;
@@ -218,10 +220,15 @@ namespace MenuGenerator {
                     drinks.Add(category);
                 }
 
+                if (category.Name.Equals("Korean Ade")) {
+                    korean_ade = category;
+                }
+
                 foreach(MenuItem item in category.Items) {
                     if (item.Description.EndsWith('.')) {
-                        item.Description.TrimEnd('.');
+                        item.Description = item.Description.TrimEnd('.');
                     }
+                    item.Description = item.Description.Trim();
                 }
             }
 
@@ -676,34 +683,85 @@ namespace MenuGenerator {
                     List<string> col3 = ["watermelon soda", "calamansi soda", "peach bongbong", "jeju hallabong soda"];
 
                     text = "$1.99 / can";
-                    canvas.DrawText(text, x+310+250-kollektifBoldPaint.MeasureText(text)/2, y+220, kollektifBoldPaint);
-                    canvas.DrawLine(x+310+250-kollektifBoldPaint.MeasureText(text)/2, y+225, x+310+250+kollektifBoldPaint.MeasureText(text)/2, y+225, black);
+                    canvas.DrawText(text, x+310+175-kollektifBoldPaint.MeasureText(text)/2, y+220, kollektifBoldPaint);
+                    canvas.DrawLine(x+310+175-kollektifBoldPaint.MeasureText(text)/2, y+225, x+310+175+kollektifBoldPaint.MeasureText(text)/2, y+225, black);
                     y += kollektifBoldPaint.TextSize + 5;
 
                     foreach (string drink in col1) {
-                        canvas.DrawText(drink, x+310+250-kollektifBoldPaint.MeasureText(drink)/2, y+220, kollektifBoldPaint);
+                        canvas.DrawText(drink, x+310+175-kollektifBoldPaint.MeasureText(drink)/2, y+220, kollektifBoldPaint);
                         y += kollektifBoldPaint.TextSize + 5;
                     }
 
-                    y += 1000;
-                    canvas.DrawText("DOSIIROC " + category.Name.ToUpper(), x, y, kollektifBoldPaint);
+                    y = startingy;
+
+                    text = "$2.50 / can";
+                    canvas.DrawText(text, x+310+580-kollektifBoldPaint.MeasureText(text)/2, y+220, kollektifBoldPaint);
+                    canvas.DrawLine(x+310+580-kollektifBoldPaint.MeasureText(text)/2, y+225, x+310+580+kollektifBoldPaint.MeasureText(text)/2, y+225, black);
+                    y += kollektifBoldPaint.TextSize + 5;
+
+                    foreach (string drink in col2) {
+                        canvas.DrawText(drink, x+310+580-kollektifBoldPaint.MeasureText(drink)/2, y+220, kollektifBoldPaint);
+                        y += kollektifBoldPaint.TextSize + 5;
+                    }
+
+                    y = startingy;
+
+                    text = "$2.99 / can";
+                    canvas.DrawText(text, x+310+1050-kollektifBoldPaint.MeasureText(text)/2, y+220, kollektifBoldPaint);
+                    canvas.DrawLine(x+310+1050-kollektifBoldPaint.MeasureText(text)/2, y+225, x+310+1050+kollektifBoldPaint.MeasureText(text)/2, y+225, black);
+                    y += kollektifBoldPaint.TextSize + 5;
+
+                    foreach (string drink in col3) {
+                        canvas.DrawText(drink, x+310+1050-kollektifBoldPaint.MeasureText(drink)/2, y+220, kollektifBoldPaint);
+                        y += kollektifBoldPaint.TextSize + 5;
+                    }
+
+                    kollektifBoldPaint.TextSize = CATEGORY_FONT_SIZE;
+
+                    y += 500;
+                    x += 375 + 1300/2 - 1600/2;
+
+                    bool is_there_ade = korean_ade.Items.Count > 0;
+                    
+                    canvas.DrawRect(x-75, y-150, 1600, 200 + (category.Items.Count+ (is_there_ade ? 1 : 0)) * (is_there_ade ? 190 : 175), brown);
+
+                    text = "DOSIIROC " + category.Name.ToUpper();
+
+                    canvas.DrawText(text , x-75 + 1600/2 - kollektifBoldPaint.MeasureText(text)/2, y, kollektifBoldPaint);
 
                     kollektifBoldPaint.TextSize = ITEM_NAME_FONT_SIZE;
 
                     y += kollektifBoldPaint.TextSize + 30;
-
+                    
                     foreach(MenuItem item in category.Items) {
                         drawWithKorean(canvas, x, y, kollektifBoldPaint, nanumGothicBoldPaint, item.Name.ToUpper(), item.Korean);
-                        canvas.DrawText('$' + item.Cost, x + 1100, y, kollektifBoldPaint);
+                        canvas.DrawText('$' + item.Cost, x + 1300, y, kollektifBoldPaint);
 
                         y += kollektifPaint.TextSize + 20;
                         if (item.Description.Contains("(hot/iced)")) {
-                            y = drawTextWrap(canvas, x, y, x + 1100, kollektifPaint, item.Description.ToLower().Remove(item.Description.LastIndexOf("(hot/iced)")));
+                            y = drawTextWrap(canvas, x, y, x + 1300, kollektifPaint, item.Description.ToLower().Remove(item.Description.LastIndexOf("(hot/iced)")));
                         }
                         else {
-                            y = drawTextWrap(canvas, x, y, x + 1100, kollektifPaint, item.Description.ToLower());
+                            y = drawTextWrap(canvas, x, y, x + 1300, kollektifPaint, item.Description.ToLower());
                         }
                         y += kollektifBoldPaint.TextSize + 30;
+                    }
+                    if (is_there_ade) {
+                        canvas.DrawText("Korean Ade".ToUpper(), x, y, kollektifBoldPaint);
+                        canvas.DrawText('$' + korean_ade.ade_price, x + 1300, y, kollektifBoldPaint);
+
+                        y += kollektifPaint.TextSize + 20;
+
+                        text = "->";
+
+                        foreach(MenuItem ade in korean_ade.Items) {
+                            text += " " + ade.Name + " |";
+                        }
+
+                        y = drawTextWrap(canvas, x, y, x + 1300, kollektifPaint, text.TrimEnd('|'));
+
+                        y += kollektifPaint.TextSize + 20;
+                        y = drawTextWrap(canvas, x, y, x + 1300, kollektifPaint, "Homemade fruit cheong (korean style fruit preserves) with sparkling water.");
                     }
                 }
             }

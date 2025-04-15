@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MenuGenerator")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c5d8e4c211a3ab3b758cadbdb1067462528aaee7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a50ae36b678d7f8fc7c07adc33af3a5a23aa59a3")]
 [assembly: System.Reflection.AssemblyProductAttribute("MenuGenerator")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MenuGenerator")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
