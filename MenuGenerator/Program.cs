@@ -169,26 +169,45 @@ namespace MenuGenerator {
             }
             else {
                 kollektifBIPaint.TextSize = 100;
+                if (!args.Contains("0")) {
+                    canvas.DrawRect(150, 300, 2050, 15, black);
+                    canvas.DrawRect(width-150-320, 300, 320, 15, black);
 
-                canvas.DrawRect(150, 300, 2050, 15, black);
-                canvas.DrawRect(width-150-320, 300, 320, 15, black);
-                canvas.DrawRect(width-150-450, height-150, 450, 15, black);
-                canvas.DrawRect(150, height-150, width-150-1600, 15, black);
+                    canvas.DrawText("cafe menu", 2200+1305-sceageusPaint.MeasureText("cafe menu")/2, 300+sceageusPaint.TextSize/4, sceageusPaint);
+                    using (SKPaint red = new SKPaint { Color = new SKColor(230, 60, 59), Typeface = KollektifBI, TextSize = 100 }) {
+                        canvas.DrawText("hot drinks ", 2200+1305-sceageusPaint.MeasureText("caf")/2-165, 300+sceageusPaint.TextSize/4+95, red);
+                    };
 
-                canvas.DrawText("cafe menu", 2200+1305-sceageusPaint.MeasureText("cafe menu")/2, 300+sceageusPaint.TextSize/4, sceageusPaint);
-                using (SKPaint red = new SKPaint { Color = new SKColor(230, 60, 59), Typeface = KollektifBI, TextSize = 100 }) {
-                    canvas.DrawText("hot drinks ", 2200+1305-sceageusPaint.MeasureText("caf")/2-165, 300+sceageusPaint.TextSize/4+95, red);
-                };
+                    canvas.DrawText(" - 12oz / ", 2200+1305-sceageusPaint.MeasureText("caf")/2-165+kollektifBIPaint.MeasureText("hot drinks"), 300+sceageusPaint.TextSize/4+95, kollektifBIPaint);
 
-                canvas.DrawText(" - 12oz / ", 2200+1305-sceageusPaint.MeasureText("caf")/2-165+kollektifBIPaint.MeasureText("hot drinks"), 300+sceageusPaint.TextSize/4+95, kollektifBIPaint);
+                    using (SKPaint blue = new SKPaint { Color = new SKColor(86, 123, 170), Typeface = KollektifBI, TextSize = 100}) {
+                        blue.Color = new SKColor(86, 123, 170);
 
-                using (SKPaint blue = new SKPaint { Color = new SKColor(86, 123, 170), Typeface = KollektifBI, TextSize = 100}) {
-                    blue.Color = new SKColor(86, 123, 170);
+                        canvas.DrawText("iced drinks", 2200+1305-sceageusPaint.MeasureText("caf")/2-165+kollektifBIPaint.MeasureText("hot drinks - 12oz / "), 300+sceageusPaint.TextSize/4+95, blue);
+                    }
+                    canvas.DrawText(" - 16oz", 2200+1305-sceageusPaint.MeasureText("caf")/2-165+kollektifBIPaint.MeasureText("hot drinks - 12oz / iced drinks"), 300+sceageusPaint.TextSize/4+95, kollektifBIPaint);
+                }
+                else {
+                    canvas.DrawRect(150, 300, 300, 15, black);
+                    canvas.DrawRect(width-150-2050, 300, 2050, 15, black);
 
-                    canvas.DrawText("iced drinks", 2200+1305-sceageusPaint.MeasureText("caf")/2-165+kollektifBIPaint.MeasureText("hot drinks - 12oz / "), 300+sceageusPaint.TextSize/4+95, blue);
+                    canvas.DrawText("cafe menu", 450+1305-sceageusPaint.MeasureText("cafe menu")/2, 300+sceageusPaint.TextSize/4, sceageusPaint);
+                    using (SKPaint red = new SKPaint { Color = new SKColor(230, 60, 59), Typeface = KollektifBI, TextSize = 100 }) {
+                        canvas.DrawText("hot drinks ", 450+1305-sceageusPaint.MeasureText("caf")/2-165, 300+sceageusPaint.TextSize/4+95, red);
+                    };
+
+                    canvas.DrawText(" - 12oz / ", 450+1305-sceageusPaint.MeasureText("caf")/2-165+kollektifBIPaint.MeasureText("hot drinks"), 300+sceageusPaint.TextSize/4+95, kollektifBIPaint);
+
+                    using (SKPaint blue = new SKPaint { Color = new SKColor(86, 123, 170), Typeface = KollektifBI, TextSize = 100}) {
+                        blue.Color = new SKColor(86, 123, 170);
+
+                        canvas.DrawText("iced drinks", 450+1305-sceageusPaint.MeasureText("caf")/2-165+kollektifBIPaint.MeasureText("hot drinks - 12oz / "), 300+sceageusPaint.TextSize/4+95, blue);
+                    }
+                    canvas.DrawText(" - 16oz", 450+1305-sceageusPaint.MeasureText("caf")/2-165+kollektifBIPaint.MeasureText("hot drinks - 12oz / iced drinks"), 300+sceageusPaint.TextSize/4+95, kollektifBIPaint);
                 }
 
-                canvas.DrawText(" - 16oz", 2200+1305-sceageusPaint.MeasureText("caf")/2-165+kollektifBIPaint.MeasureText("hot drinks - 12oz / iced drinks"), 300+sceageusPaint.TextSize/4+95, kollektifBIPaint);
+                canvas.DrawRect(width-150-450, height-150, 450, 15, black);
+                canvas.DrawRect(150, height-150, width-150-1600, 15, black);
 
                 canvas.DrawText("dosiiroccafe.com | @dosiiroccafe", (width-1600)+((width-150-450) - (width-1600))/2 - kollektifBoldPaint.MeasureText("dosiiroccafe.com | @dosiiroccafe")/2, height-150+kollektifBoldPaint.TextSize/2, kollektifBoldPaint);
                 canvas.DrawText("If you have a food allergy or any dietary restriction/preference, please notfiy us. We will do our best to accomodate you.", 150, 2950, kollektifBoldPaint);
@@ -462,11 +481,15 @@ namespace MenuGenerator {
 
                 }
                 else if (category.Name == "Stews") {
-                    startingx = 150;
-                    x = 150;
+                    startingx = args.Contains("0") ? 3600 : 150;
+                    x = args.Contains("0") ? 3600 : 150;
                     y = 500;
                     startingy = 500;
                     padding = PADDING_SIZE;
+
+                    for (float circlex = x + (args.Contains("0") ? -200 : 1300), circley = 400; circley < 2900; circley += 100) {
+                        canvas.DrawCircle(circlex, circley, 10, black);
+                    }
 
                     kollektifBoldPaint.TextSize = CATEGORY_FONT_SIZE;
                     kollektifPaint.TextSize = DESCRIPTION_FONT_SIZE;
@@ -512,8 +535,8 @@ namespace MenuGenerator {
                     }
                 }
                 else if (category.Name == "Katsu Cutlets") {
-                    startingx = 150;
-                    x = 150;
+                    startingx = args.Contains("0") ? 3600 : 150;
+                    x = args.Contains("0") ? 3600 : 150;
                     y = 2500;
                     startingy = 2500;
                     padding = PADDING_SIZE;
@@ -538,8 +561,8 @@ namespace MenuGenerator {
                     }
                 }
                 else if (category.Name == "Coffee") {
-                    startingx = 1700;
-                    x = 1700;
+                    startingx = args.Contains("0") ? 150: 1900;
+                    x = args.Contains("0") ? 150: 1900;
                     y = 550;
                     startingy = 550;
                     padding = PADDING_SIZE;
@@ -586,8 +609,8 @@ namespace MenuGenerator {
                     }
                 }
                 else if (category.Name == "Tea") {
-                    startingx = 1700;
-                    x = 1700;
+                    startingx = args.Contains("0") ? 150: 1900;
+                    x = args.Contains("0") ? 150: 1900;
                     y = 1550;
                     startingy = 1550;
                     padding = PADDING_SIZE;
@@ -660,8 +683,8 @@ namespace MenuGenerator {
                     canvas.DrawText(text, x-kollektifBIPaint.MeasureText(text)/2, y, kollektifBIPaint);
                 }
                 else if (category.Name == "Specialties") {
-                    startingx = 3000;
-                    x = 3000;
+                    startingx = args.Contains("0") ? 1400: 3200;
+                    x = args.Contains("0") ? 1400: 3200;
                     y = 550;
                     startingy = 550;
                     padding = PADDING_SIZE;
